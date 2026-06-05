@@ -80,7 +80,7 @@ ADK provides a convenient way to run the agent locally:
 uv run adk run claim_adjudication_agent
 
 # Run via Web Interface
-uv run adk web
+uv run adk web --allow_origins "*"
 ```
 
 ## Example Interaction
@@ -142,6 +142,54 @@ The Google Agents CLI will prompt you to select deployment options and provides 
 - **Modify Prompts**: Update `claim_adjudication_agent/prompt.py` or the sub-agent prompts.
 - **Add Tools**: Extend the capability by adding new functions to `tools/tools.py`.
 - **Callback Logic**: Adjust state management or logging in `tools/tools.py`.
+
+## Deployment to Agent Engine
+
+The Medical Pre-Authorization AI Agent can be deployed to Agent Runtime using the following
+commands:
+
+```bash
+uv run deployment deployment/deploy.py --create
+```
+
+When the deployment finishes, it will print a line like this:
+
+```
+Created remote agent: projects/<PROJECT_NUMBER>/locations/<PROJECT_LOCATION>/reasoningEngines/<AGENT_ENGINE_ID>
+```
+
+If you forgot the AGENT_ENGINE_ID, you can list existing agents using:
+
+```bash
+uv run deployment deployment/deploy.py --list
+```
+
+The output will be like:
+
+```
+All remote agents:
+
+123456789 ("medical_pre_authorization")
+- Create time: 2025-05-12 12:35:34.245431+00:00
+- Update time: 2025-05-12 12:36:01.421432+00:00
+```
+
+You may interact with the deployed agent using the `test_deployment.py` script
+```bash
+export USER_ID=<any string>
+export AGENT_ENGINE_ID=<AGENT_ENGINE_ID>
+uv run --extra deployment deployment/test_deployment.py --resource_id=${AGENT_ENGINE_ID} --user_id=${USER_ID}
+```
+
+The output will be like:
+```bash
+Found agent with resource ID: ...
+Created session for user ID: ...
+Type 'quit' to exit.
+Input: Hello, what can you do for me?
+Response: Hello! I'm a pre-authorization agent. I can help you process pre-authorization requests for medical treatments. I'll need some details about the treatment, your medical records, and your health insurance policy to do so.
+```
+
 
 ## Areas of Enhancement
 
