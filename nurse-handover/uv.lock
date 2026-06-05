@@ -1666,7 +1666,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "google-adk", specifier = ">=1.31.0" },
+    { name = "google-adk", specifier = ">=1.13.0" },
     { name = "pyyaml", specifier = ">=6.0.2" },
     { name = "uvicorn", specifier = ">=0.34.3" },
 ]
