@@ -24,7 +24,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import vertexai
 from dotenv import load_dotenv
 from vertexai import agent_engines
-from vertexai.preview.reasoning_engines import AdkApp
+# from vertexai.preview.reasoning_engines import AdkApp
+from vertexai.agent_engines import AdkApp
 
 from nurse_handover.agent import root_agent
 
