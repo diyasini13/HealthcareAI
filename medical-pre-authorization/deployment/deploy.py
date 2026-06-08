@@ -18,7 +18,7 @@ import vertexai
 from absl import app, flags
 from dotenv import load_dotenv
 from vertexai import agent_engines
-from vertexai.preview.reasoning_engines import AdkApp
+from vertexai.agent_engines import AdkApp
 
 from medical_pre_authorization.agent import root_agent
 
