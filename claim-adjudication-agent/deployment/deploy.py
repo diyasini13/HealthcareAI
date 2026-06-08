@@ -24,7 +24,8 @@ import vertexai
 from absl import app, flags
 from dotenv import load_dotenv
 from vertexai import agent_engines
-from vertexai.preview.reasoning_engines import AdkApp
+# from vertexai.preview.reasoning_engines import AdkApp
+from vertexai.agent_engines import AdkApp
 
 from claim_adjudication_agent.agent import root_agent
 
