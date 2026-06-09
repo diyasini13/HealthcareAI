@@ -27,8 +27,8 @@ root_agent = Agent(
    pre-auth request for a treatment.""",
     instruction=AGENT_INSTRUCTION,
     generate_content_config=types.GenerateContentConfig(temperature=0.2),
-    tools=[
-        AgentTool(agent=information_extractor),
-        AgentTool(agent=data_analyst),
+    sub_agents=[
+        information_extractor,
+        data_analyst,
     ],
 )
